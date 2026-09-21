@@ -559,9 +559,20 @@
 
     <script>
         // ==================== DATA & STATE ====================
-        const APP_VERSION = '1.2.0';
+        const APP_VERSION = '1.2.1';
 
         const STORAGE_KEY = 'zero_device_pos_data';
+
+        // Permanent Firebase config — always used for warranty online storage & QR lookup
+        const DEFAULT_FIREBASE_CONFIG = {
+            apiKey: "AIzaSyB0g7jOpKsGWlLb-eSP07kB6Ivtf4pvGic",
+            authDomain: "zatheer-pos-online.firebaseapp.com",
+            projectId: "zatheer-pos-online",
+            storageBucket: "zatheer-pos-online.firebasestorage.app",
+            messagingSenderId: "907228610780",
+            appId: "1:907228610780:web:18949c601d31dfb150f419",
+            measurementId: "G-L3DL0JB57V"
+        };
         
         let state = {
             currentUser: null,
@@ -584,7 +595,7 @@
                 theme: 'light',
                 warrantyMonths: 12,
                 firebase: {
-                    config: null,      // { apiKey, projectId, authDomain, storageBucket, appId, messagingSenderId }
+                    config: { ...DEFAULT_FIREBASE_CONFIG },
                     connected: false,
                     lastConnectedAt: null
                 }
@@ -633,6 +644,9 @@
             if (state.products.length === 0) {
                 seedSampleData();
             }
+
+            // Permanent Firebase: auto-connect on every load
+            autoConnectFirebase();
             
             setTimeout(() => {
                 document.getElementById('loading-screen').classList.add('hidden');
@@ -650,6 +664,28 @@
             document.querySelectorAll('.sidebar-item').forEach(btn => {
                 btn.addEventListener('click', () => navigateTo(btn.dataset.page));
             });
+        }
+
+        async function autoConnectFirebase() {
+            const cfg = DEFAULT_FIREBASE_CONFIG;
+            state.settings.firebase = state.settings.firebase || {};
+            state.settings.firebase.config = { ...cfg };
+            try {
+                await firestoreSetDocument('_meta', 'connection-test', {
+                    app: 'zero-device-pos',
+                    testedAt: new Date().toISOString(),
+                    ok: true,
+                    permanent: true
+                }, cfg);
+                state.settings.firebase.connected = true;
+                state.settings.firebase.lastConnectedAt = new Date().toISOString();
+                saveData();
+                setTimeout(() => resyncPendingWarranties(), 500);
+            } catch (err) {
+                console.warn('Auto Firebase connect failed:', err);
+                state.settings.firebase.connected = false;
+                saveData();
+            }
         }
 
         function seedSampleData() {
@@ -716,8 +752,11 @@
                     if (!state.settings.warrantyMonths) {
                         state.settings.warrantyMonths = 12;
                     }
+                    // Always use permanent Firebase config (zatheer-pos-online)
                     if (!state.settings.firebase) {
-                        state.settings.firebase = { config: null, connected: false, lastConnectedAt: null };
+                        state.settings.firebase = { config: { ...DEFAULT_FIREBASE_CONFIG }, connected: false, lastConnectedAt: null };
+                    } else {
+                        state.settings.firebase.config = { ...DEFAULT_FIREBASE_CONFIG };
                     }
                     // Drop legacy Google Drive / QR base URL settings from older saves
                     delete state.settings.googleDrive;
@@ -3347,53 +3386,35 @@ body{font-family:system-ui,-apple-system,sans-serif;background:#f1f5f9;color:#1e
                         </div>
                     </div>
 
-                    <!-- 4. Firebase Connection -->
+                    <!-- 4. Firebase Connection (permanent) -->
                     <div class="settings-section" id="sec-firebase">
                         <button type="button" class="settings-section-btn" onclick="toggleSettingsSection('sec-firebase')">
                             <span class="icon-wrap"><i class="fas fa-fire"></i></span>
                             <span>
                                 <span class="block text-sm">Firebase Connection</span>
-                                <span class="block text-xs font-normal text-slate-400">Powers online warranty storage & QR lookup</span>
+                                <span class="block text-xs font-normal text-slate-400">Permanent · zatheer-pos-online · warranty online storage</span>
                             </span>
                             <i class="fas fa-chevron-down chevron"></i>
                         </button>
                         <div class="settings-body">
-                            <form class="space-y-3 pt-2" onsubmit="saveFirebaseSettings(event)">
-                                <div class="p-3 rounded-lg bg-blue-50 border border-blue-100 text-xs text-blue-800 leading-relaxed">
-                                    <p class="font-semibold mb-1"><i class="fas fa-info-circle mr-1"></i> Firebase setup (warranty only)</p>
-                                    <ol class="list-decimal ml-4 space-y-1">
-                                        <li>Go to <strong>console.firebase.google.com</strong> → create project → add a <strong>Web app</strong></li>
-                                        <li>Enable <strong>Firestore Database</strong> (Build → Firestore → Create database). Start in <strong>test mode</strong>, then paste the rules below.</li>
-                                        <li>Project settings → Your apps → copy the full <code>firebaseConfig</code> object and paste below → Connect</li>
-                                        <li>Host this POS page on <strong>http/https</strong> (not file://) so customer phone can open the QR link</li>
-                                    </ol>
-                                    <p class="mt-2">Only warranty reports go online. Products, sales, customers stay in this browser (local).</p>
-                                </div>
-                                <div>
-                                    <label class="block text-xs font-medium text-slate-500 mb-1">Firebase Config</label>
-                                    <textarea name="firebaseConfigInput" rows="5" placeholder='const firebaseConfig = {
-  apiKey: "...",
-  authDomain: "...",
-  projectId: "...",
-  ...
-};' class="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs font-mono">${fb.config ? JSON.stringify(fb.config, null, 2) : ''}</textarea>
-                                    <p class="text-[10px] text-slate-400 mt-1">Paste the exact snippet from Firebase Console — it's parsed automatically, no need to edit it.</p>
+                            <div class="space-y-3 pt-2">
+                                <div class="p-3 rounded-lg bg-emerald-50 border border-emerald-100 text-xs text-emerald-800 leading-relaxed">
+                                    <p class="font-semibold mb-1"><i class="fas fa-check-circle mr-1"></i> Permanent Firebase linked</p>
+                                    <p>Project <strong>zatheer-pos-online</strong> is built into this POS. Connection is automatic on every load. Only warranty reports are stored online; products, sales and customers stay local in this browser.</p>
+                                    <p class="mt-2">Host this page on <strong>http/https</strong> (not file://) so customer phones can open warranty QR links.</p>
                                 </div>
                                 <div class="flex items-center gap-2 text-sm">
-                                    <span class="w-2.5 h-2.5 rounded-full ${fb.connected ? 'bg-emerald-500' : 'bg-slate-300'}"></span>
-                                    <span class="${fb.connected ? 'text-emerald-700 font-medium' : 'text-slate-500'}">${fb.connected ? 'Connected to Firebase' : 'Not connected'}</span>
+                                    <span class="w-2.5 h-2.5 rounded-full ${fb.connected ? 'bg-emerald-500 animate-pulse' : 'bg-amber-400'}"></span>
+                                    <span class="${fb.connected ? 'text-emerald-700 font-medium' : 'text-amber-700 font-medium'}">${fb.connected ? 'Connected to zatheer-pos-online' : 'Connecting… / check internet & Firestore rules'}</span>
                                 </div>
+                                <p class="text-[11px] text-slate-500 font-mono">projectId: zatheer-pos-online</p>
                                 <div class="flex flex-wrap gap-2">
-                                    <button type="submit" class="animated-btn btn-primary text-white text-sm font-medium px-4 py-2.5 rounded-lg">
-                                        <i class="fas fa-plug mr-2"></i>${fb.connected ? 'Reconnect' : 'Connect'}
+                                    <button type="button" onclick="autoConnectFirebase().then(() => { showToast(state.settings.firebase.connected ? 'Firebase reconnected' : 'Connect failed — check Firestore rules', state.settings.firebase.connected ? 'success' : 'error'); renderSettings(); })" class="animated-btn btn-primary text-white text-sm font-medium px-4 py-2.5 rounded-lg">
+                                        <i class="fas fa-sync-alt mr-2"></i>Reconnect
                                     </button>
-                                    ${fb.connected ? `
-                                    <button type="button" onclick="disconnectFirebase()" class="animated-btn px-4 py-2.5 rounded-lg border border-red-200 text-red-600 text-sm font-medium hover:bg-red-50">
-                                        <i class="fas fa-unlink mr-2"></i>Disconnect
-                                    </button>` : ''}
                                 </div>
                                 <details class="text-xs text-slate-500">
-                                    <summary class="cursor-pointer font-medium text-slate-600">Firestore security rules (paste in Firebase Console → Firestore → Rules)</summary>
+                                    <summary class="cursor-pointer font-medium text-slate-600">Firestore security rules (required once in Firebase Console)</summary>
                                     <pre class="mt-2 p-2.5 rounded-lg bg-slate-800 text-slate-100 overflow-x-auto text-[10px] leading-relaxed">rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -3405,9 +3426,9 @@ service cloud.firestore {
     }
   }
 }</pre>
-                                    <p class="mt-1">This lets the POS write warranty reports and lets a customer's phone read them by code, with no backend server. Since anyone with the code can read/write, only warranty data — never products, pricing, or customer login info — is ever sent here.</p>
+                                    <p class="mt-1">Paste these in Firebase Console → Firestore → Rules → Publish. Without this, warranty sync will fail with 403.</p>
                                 </details>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
