@@ -147,6 +147,558 @@
             box-shadow: 0 0 0 1px rgba(0,0,0,0.05), 0 25px 60px -15px rgba(0,0,0,0.18);
         }
         
+        /* ===== Professional Invoice Redesign (A4) ===== */
+        .inv-wrap {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #1e293b;
+            background: #fff;
+        }
+        .inv-top-bar {
+            background: linear-gradient(90deg, #0c4a8a 0%, #0c8ce9 50%, #36a7f6 100%);
+            height: 6px;
+        }
+        .inv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 18px 24px 12px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .inv-logo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .inv-logo-mark {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0c8ce9 0%, #0158a1 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            box-shadow: 0 4px 12px rgba(12,140,233,0.35);
+        }
+        .inv-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #0b3f6e;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        .inv-brand-sub {
+            font-size: 10px;
+            color: #0c8ce9;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .inv-brand-tag {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .inv-partner {
+            text-align: right;
+        }
+        .inv-partner-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: #0c8ce9;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+        .inv-contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            padding: 8px 24px;
+            background: linear-gradient(90deg, #f0f7ff 0%, #e0effe 100%);
+            border-bottom: 1px solid #dbeafe;
+            font-size: 11px;
+            color: #334155;
+        }
+        .inv-contact-bar span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .inv-contact-bar i {
+            color: #0c8ce9;
+            width: 14px;
+            text-align: center;
+        }
+        .inv-meta-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 16px;
+            padding: 16px 24px;
+        }
+        .inv-title-block {
+            flex: 1;
+        }
+        .inv-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0b3f6e;
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .inv-title-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0c8ce9, #0158a1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        .inv-thanks {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .inv-meta-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 4px 16px;
+            font-size: 12px;
+        }
+        .inv-meta-grid .lbl {
+            color: #64748b;
+            font-weight: 500;
+        }
+        .inv-meta-grid .val {
+            color: #0f172a;
+            font-weight: 600;
+            text-align: right;
+        }
+        .inv-status-paid {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #d1fae5;
+            color: #047857;
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 999px;
+        }
+        .inv-status-unpaid {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #fef3c7;
+            color: #b45309;
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 999px;
+        }
+        .inv-status-partial {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-weight: 700;
+            font-size: 11px;
+            padding: 2px 10px;
+            border-radius: 999px;
+        }
+        .inv-qr-box {
+            flex-shrink: 0;
+            text-align: center;
+        }
+        .inv-qr-box #invoice-qr-code {
+            width: 96px;
+            height: 96px;
+            background: #fff;
+            border: 2px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .inv-qr-box #invoice-qr-code img,
+        .inv-qr-box #invoice-qr-code canvas,
+        .inv-qr-box #invoice-qr-code table {
+            max-width: 88px !important;
+            max-height: 88px !important;
+        }
+        .inv-qr-label {
+            font-size: 9px;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+        .inv-customer-row {
+            display: flex;
+            gap: 16px;
+            padding: 0 24px 16px;
+        }
+        .inv-customer-card {
+            flex: 1;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px 16px;
+        }
+        .inv-customer-card h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: #0c8ce9;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .inv-customer-card .row {
+            display: flex;
+            gap: 8px;
+            font-size: 12px;
+            margin-bottom: 3px;
+        }
+        .inv-customer-card .row .k {
+            color: #64748b;
+            min-width: 58px;
+            font-weight: 500;
+        }
+        .inv-customer-card .row .v {
+            color: #0f172a;
+            font-weight: 600;
+        }
+        .inv-promo {
+            width: 200px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, #0c8ce9 0%, #0158a1 100%);
+            border-radius: 12px;
+            padding: 14px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .inv-promo i {
+            font-size: 28px;
+            margin-bottom: 6px;
+            opacity: 0.9;
+        }
+        .inv-promo .t1 {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .inv-promo .t2 {
+            font-size: 10px;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+        .inv-table-wrap {
+            padding: 0 24px 12px;
+        }
+        .inv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        .inv-table thead th {
+            background: linear-gradient(90deg, #0c4a8a 0%, #0c8ce9 100%);
+            color: #fff;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 10px 10px;
+            text-align: left;
+        }
+        .inv-table thead th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+        .inv-table thead th:last-child {
+            border-radius: 0 8px 0 0;
+            text-align: right;
+        }
+        .inv-table thead th.ctr { text-align: center; }
+        .inv-table thead th.rgt { text-align: right; }
+        .inv-table tbody td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: middle;
+        }
+        .inv-table tbody td.ctr { text-align: center; }
+        .inv-table tbody td.rgt { text-align: right; }
+        .inv-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        .inv-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .inv-prod-name {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 12px;
+        }
+        .inv-prod-specs {
+            font-size: 10px;
+            color: #64748b;
+            margin-top: 2px;
+            line-height: 1.35;
+        }
+        .inv-prod-img {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            background: #f1f5f9;
+        }
+        .inv-bottom {
+            display: flex;
+            gap: 16px;
+            padding: 8px 24px 16px;
+            align-items: flex-start;
+        }
+        .inv-terms {
+            flex: 1;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0effe 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 14px 16px;
+            min-height: 120px;
+        }
+        .inv-terms h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #0b3f6e;
+            margin-bottom: 6px;
+        }
+        .inv-terms ul {
+            margin: 0;
+            padding-left: 16px;
+            font-size: 10px;
+            color: #475569;
+            line-height: 1.5;
+        }
+        .inv-totals {
+            width: 240px;
+            flex-shrink: 0;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 16px;
+        }
+        .inv-totals .line {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            padding: 4px 0;
+            color: #475569;
+        }
+        .inv-totals .line .amt {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .inv-totals .grand {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            padding-top: 8px;
+            border-top: 2px solid #0c8ce9;
+            font-size: 14px;
+            font-weight: 800;
+            color: #0b3f6e;
+        }
+        .inv-totals .balance {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6px;
+            padding: 6px 8px;
+            background: #fef3c7;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #b45309;
+        }
+        .inv-sign-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 8px 24px 16px;
+            gap: 24px;
+        }
+        .inv-sign-box {
+            text-align: center;
+            min-width: 160px;
+        }
+        .inv-sign-line {
+            height: 48px;
+            border-bottom: 1.5px dashed #94a3b8;
+            margin-bottom: 6px;
+        }
+        .inv-sign-label {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 600;
+        }
+        .inv-stamp {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 2px solid #0c8ce9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #0c8ce9;
+            font-size: 9px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.2;
+            opacity: 0.85;
+            transform: rotate(-8deg);
+        }
+        .inv-footer {
+            background: linear-gradient(90deg, #0c4a8a 0%, #0c8ce9 100%);
+            color: #fff;
+            padding: 10px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+        }
+        .inv-footer .left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+        .inv-footer .right {
+            opacity: 0.9;
+            font-size: 10px;
+        }
+
+        /* Full A4 print — only invoice visible
+           IMPORTANT: never display:none on ancestors of #invoice-print-area
+           (modal-backdrop wraps the invoice). Use visibility only. */
+        @page {
+            size: A4 portrait;
+            margin: 8mm;
+        }
+        @media print {
+            html, body {
+                height: auto !important;
+                width: 100% !important;
+                background: #fff !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            /* Hide everything by visibility (not display) so children can re-show */
+            body * {
+                visibility: hidden !important;
+            }
+            /* Show invoice and all descendants */
+            #invoice-print-area,
+            #invoice-print-area * {
+                visibility: visible !important;
+            }
+            /* Ancestors must not be display:none — reset modal chrome */
+            #modal-container,
+            #modal-container > .modal-backdrop,
+            #modal-container > .modal-backdrop > div {
+                visibility: visible !important;
+                display: block !important;
+                position: static !important;
+                inset: auto !important;
+                background: transparent !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                max-width: none !important;
+                width: 100% !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                transform: none !important;
+                animation: none !important;
+            }
+            #invoice-print-area {
+                position: absolute !important;
+                left: 0 !important;
+                top: 0 !important;
+                right: auto !important;
+                bottom: auto !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                max-height: none !important;
+                height: auto !important;
+                overflow: visible !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                background: #fff !important;
+            }
+            .no-print {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            /* Screen UI stays hidden */
+            #loading-screen,
+            #login-screen,
+            #main-app,
+            #toast-container,
+            #sidebar,
+            header {
+                display: none !important;
+                visibility: hidden !important;
+            }
+            .inv-header, .inv-meta-row, .inv-customer-row, .inv-table-wrap, .inv-bottom, .inv-sign-row, .inv-contact-bar {
+                padding-left: 8px !important;
+                padding-right: 8px !important;
+            }
+            .inv-promo { display: none !important; }
+            .inv-prod-img { width: 40px !important; height: 40px !important; }
+            .inv-qr-box #invoice-qr-code {
+                width: 88px !important;
+                height: 88px !important;
+            }
+            #invoice-qr-code img,
+            #invoice-qr-code canvas,
+            #invoice-qr-code table {
+                width: 80px !important;
+                height: 80px !important;
+            }
+            .inv-top-bar, .inv-footer, .inv-table thead th, .inv-contact-bar,
+            .inv-status-paid, .inv-status-unpaid, .inv-status-partial, .inv-totals .balance,
+            .inv-logo-mark, .inv-title-icon, .inv-promo {
+                print-color-adjust: exact !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+            .inv-sign-row { page-break-inside: avoid; }
+            .inv-table { page-break-inside: auto; }
+            .inv-table tr { page-break-inside: avoid; }
+        }
+
         .invoice-header-accent {
             background: linear-gradient(135deg, #0c8ce9 0%, #0158a1 50%, #072849 100%);
         }
@@ -160,98 +712,6 @@
             background: #f8fafc;
         }
         
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #0c8ce9;
-            box-shadow: 0 0 0 3px rgba(12, 140, 233, 0.15);
-        }
-        
-        .loading-spinner {
-            border: 3px solid #e2e8f0;
-            border-top-color: #0c8ce9;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 0.8s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        .toast {
-            animation: slideInRight 0.3s ease-out;
-        }
-        
-        .table-row {
-            transition: background 0.15s ease;
-        }
-        .table-row:hover {
-            background: #f8fafc;
-        }
-        
-        .badge {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.025em;
-        }
-        
-        .image-upload-zone {
-            border: 2px dashed #cbd5e1;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
-        .image-upload-zone:hover {
-            border-color: #0c8ce9;
-            background: rgba(12, 140, 233, 0.04);
-        }
-        .image-upload-zone.has-image {
-            border-style: solid;
-            border-color: #e2e8f0;
-        }
-        
-        /* Print styles for invoice — fit to a single A5 sheet */
-        @page {
-            size: A5;
-            margin: 6mm;
-        }
-        @media print {
-            html, body { height: auto !important; }
-            body * { visibility: hidden; }
-            #invoice-print-area, #invoice-print-area * { visibility: visible; }
-            #invoice-print-area {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100% !important;
-                max-width: 148mm !important;
-                max-height: none !important;
-                overflow: visible !important;
-                box-shadow: none !important;
-                border-radius: 0 !important;
-            }
-            .no-print { display: none !important; }
-            .invoice-product-img { print-color-adjust: exact; -webkit-print-color-adjust: exact; width: 36px !important; height: 36px !important; }
-            .invoice-3d, .invoice-3d-deep, .invoice-badge-3d, .invoice-status-paid, .invoice-status-unpaid {
-                box-shadow: none !important;
-            }
-            .invoice-total-box, .invoice-spec-box {
-                box-shadow: none !important;
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .invoice-header-accent, .invoice-desc-banner, .invoice-status-paid, .invoice-status-unpaid {
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            #invoice-print-area .invoice-body { padding: 10px 12px !important; }
-            #invoice-print-area h1 { font-size: 16px !important; }
-            #invoice-print-area .invoice-header-accent { height: 4px !important; }
-            #invoice-print-area table { page-break-inside: avoid; font-size: 11px !important; }
-            #invoice-print-area .sign-row { page-break-inside: avoid; margin-top: 10px !important; }
-            #invoice-qr-code img, #invoice-qr-code canvas { width: 56px !important; height: 56px !important; }
-        }
-
-        /* Layered "3D box" styling for the invoice */
         .invoice-3d {
             box-shadow: 0 1px 0 rgba(11,63,110,0.05), 0 2px 0 rgba(11,63,110,0.04),
                         0 10px 22px -8px rgba(11,63,110,0.22), 0 2px 6px rgba(11,63,110,0.08);
@@ -749,10 +1209,12 @@
                     delete state.settings.warrantyBaseUrl;
                     if (!state.warranties) state.warranties = [];
                     if (!state.nextWarrantyId) state.nextWarrantyId = 1;
-                    // Migrate older bills without paymentStatus
+                    // Migrate older bills without paymentStatus / advance
                     if (state.bills && state.bills.length) {
                         state.bills.forEach(b => {
                             if (!b.paymentStatus) b.paymentStatus = 'Paid';
+                            if (b.advance == null) b.advance = 0;
+                            if (b.balanceDue == null) b.balanceDue = Math.max(0, (b.grandTotal || 0) - (b.advance || 0));
                         });
                     }
                 }
@@ -1164,12 +1626,12 @@
                 md: 'max-w-lg',
                 lg: 'max-w-2xl',
                 xl: 'max-w-4xl',
-                full: 'max-w-6xl'
+                full: 'max-w-[860px]'
             };
             const container = document.getElementById('modal-container');
             container.innerHTML = `
-                <div class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in" onclick="if(event.target===this) closeModal()">
-                    <div class="bg-white rounded-2xl shadow-premium w-full ${sizes[size]} max-h-[90vh] overflow-hidden animate-scale-in flex flex-col" onclick="event.stopPropagation()">
+                <div class="modal-backdrop fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 overflow-y-auto animate-fade-in" onclick="if(event.target===this) closeModal()">
+                    <div class="bg-white rounded-2xl shadow-premium w-full ${sizes[size] || sizes.md} my-4 max-h-none overflow-visible animate-scale-in flex flex-col" onclick="event.stopPropagation()">
                         ${content}
                     </div>
                 </div>
@@ -1561,9 +2023,22 @@
                                         <span class="text-slate-400 text-xs">LKR</span>
                                     </div>
                                 </div>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-slate-500">Advance Paid</span>
+                                    <div class="flex items-center gap-1">
+                                        <input type="number" id="cart-advance" value="0" min="0" 
+                                            class="w-20 px-2 py-1 rounded border border-slate-200 text-right text-sm"
+                                            oninput="updateCartTotals()">
+                                        <span class="text-slate-400 text-xs">LKR</span>
+                                    </div>
+                                </div>
                                 <div class="flex justify-between text-base font-bold pt-2 border-t border-slate-100">
                                     <span>Grand Total</span>
                                     <span id="cart-total" class="text-primary-600">LKR 0</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Balance Due</span>
+                                    <span id="cart-balance" class="font-semibold text-amber-600">LKR 0</span>
                                 </div>
                                 <div class="pt-2">
                                     <label class="block text-xs font-medium text-slate-500 mb-1">Payment Method</label>
@@ -1580,8 +2055,9 @@
                                     <select id="payment-status" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm">
                                         <option value="Paid">Paid</option>
                                         <option value="Unpaid">Unpaid / Loan</option>
+                                        <option value="Partial">Partial (Advance)</option>
                                     </select>
-                                    <p class="text-[10px] text-slate-400 mt-1">Choose Unpaid for loan / credit sales</p>
+                                    <p class="text-[10px] text-slate-400 mt-1">Advance enter pannina Partial auto-select aagum</p>
                                 </div>
                                 <button onclick="processBill()" class="w-full btn-primary text-white font-medium py-3 rounded-lg mt-2 flex items-center justify-center gap-2">
                                     <i class="fas fa-file-invoice"></i>
@@ -1728,9 +2204,30 @@
             const subtotal = billingCart.reduce((s, i) => s + (i.price * i.qty), 0);
             const discount = parseFloat(document.getElementById('cart-discount')?.value) || 0;
             const total = Math.max(0, subtotal - discount);
+            let advance = parseFloat(document.getElementById('cart-advance')?.value) || 0;
+            if (advance > total) {
+                advance = total;
+                const advEl = document.getElementById('cart-advance');
+                if (advEl) advEl.value = total;
+            }
+            const balance = Math.max(0, total - advance);
             
             document.getElementById('cart-subtotal').textContent = formatCurrency(subtotal);
             document.getElementById('cart-total').textContent = formatCurrency(total);
+            const balEl = document.getElementById('cart-balance');
+            if (balEl) balEl.textContent = formatCurrency(balance);
+
+            // Auto-set payment status based on advance
+            const statusEl = document.getElementById('payment-status');
+            if (statusEl) {
+                if (advance > 0 && balance > 0) {
+                    statusEl.value = 'Partial';
+                } else if (advance > 0 && balance === 0) {
+                    statusEl.value = 'Paid';
+                } else if (document.getElementById('payment-method')?.value === 'Loan') {
+                    statusEl.value = 'Unpaid';
+                }
+            }
         }
 
         function openCustomerSearch() {
@@ -1833,11 +2330,20 @@
             const subtotal = billingCart.reduce((s, i) => s + (i.price * i.qty), 0);
             const discount = parseFloat(document.getElementById('cart-discount').value) || 0;
             const grandTotal = Math.max(0, subtotal - discount);
+            let advance = parseFloat(document.getElementById('cart-advance')?.value) || 0;
+            if (advance > grandTotal) advance = grandTotal;
+            const balanceDue = Math.max(0, grandTotal - advance);
             const profit = billingCart.reduce((s, i) => s + ((i.price - i.cost) * i.qty), 0) - discount;
             const paymentMethod = document.getElementById('payment-method').value;
             let paymentStatus = document.getElementById('payment-status')?.value || 'Paid';
-            // Auto-set Unpaid when Loan is selected
-            if (paymentMethod === 'Loan') paymentStatus = 'Unpaid';
+            // Auto status from advance / loan
+            if (paymentMethod === 'Loan' && advance <= 0) {
+                paymentStatus = 'Unpaid';
+            } else if (advance > 0 && balanceDue > 0) {
+                paymentStatus = 'Partial';
+            } else if (balanceDue === 0) {
+                paymentStatus = 'Paid';
+            }
             
             // Find or create customer
             let customer = state.customers.find(c => c.nic === nic);
@@ -1869,6 +2375,8 @@
                 items: billingCart.map(i => ({ ...i })),
                 subtotal,
                 discount,
+                advance,
+                balanceDue,
                 grandTotal,
                 profit,
                 paymentMethod,
@@ -1956,6 +2464,8 @@
             document.getElementById('bill-customer-nic').value = '';
             document.getElementById('bill-customer-mobile').value = '';
             document.getElementById('cart-discount').value = 0;
+            const advReset = document.getElementById('cart-advance');
+            if (advReset) advReset.value = 0;
             filterBillingProducts();
         }
 
@@ -2001,231 +2511,224 @@
             const s = state.settings;
             const status = bill.paymentStatus || 'Paid';
             const isPaid = status === 'Paid';
-            const statusClass = isPaid ? 'invoice-status-paid' : 'invoice-status-unpaid';
-            const statusIcon = isPaid ? 'fa-check-circle' : 'fa-clock';
-            const statusLabel = isPaid ? 'PAID' : 'UNPAID';
-            const statusSub = isPaid ? 'Payment Completed' : 'Loan / Credit';
-
-            // Build a Specifications box from the first item that actually has spec data
-            const specItem = bill.items.find(i => i.ram || i.storage || i.chip || i.size);
-            const specRows = specItem ? [
-                { label: 'RAM', value: specItem.ram },
-                { label: 'Storage', value: specItem.storage },
-                { label: 'Chip', value: specItem.chip },
-                { label: 'Size', value: specItem.size }
-            ].filter(r => r.value) : [];
+            const isPartial = status === 'Partial';
+            const statusClass = isPaid ? 'inv-status-paid' : isPartial ? 'inv-status-partial' : 'inv-status-unpaid';
+            const statusIcon = isPaid ? 'fa-check-circle' : isPartial ? 'fa-coins' : 'fa-clock';
+            const statusLabel = isPaid ? 'Paid' : isPartial ? 'Partial' : 'Unpaid';
+            const advanceAmt = Number(bill.advance) || 0;
+            const grand = Number(bill.grandTotal) || 0;
+            const balanceAmt = bill.balanceDue != null ? Number(bill.balanceDue) : Math.max(0, grand - advanceAmt);
+            const esc = (v) => String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
             openModal(`
-                <div id="invoice-print-area" class="invoice-paper invoice-3d-deep overflow-y-auto max-h-[85vh] rounded-2xl" style="max-width: 148mm; margin: 0 auto;">
-                    <!-- Premium multi-color accent bar -->
-                    <div class="invoice-header-accent h-2.5 w-full"></div>
-                    
-                    <div class="invoice-body p-4 sm:p-5">
-                        <!-- Shop description at the TOP -->
-                        <div class="invoice-desc-banner rounded-lg px-3 py-2 mb-4">
-                            <p class="text-[10px] sm:text-[11px] text-slate-600 leading-snug line-clamp-3">
-                                ${s.businessDescription || 'A trusted retail store for quality laptops, computers, and accessories.'}
-                            </p>
-                        </div>
+                <div id="invoice-print-area" class="invoice-paper inv-wrap overflow-y-auto max-h-[90vh]" style="max-width: 210mm; margin: 0 auto; border-radius: 12px;">
+                    <div class="inv-top-bar"></div>
 
-                        <!-- Header: Logo + Name + Location + QR -->
-                        <div class="flex items-start justify-between gap-3 mb-4">
-                            <div class="flex items-start gap-3 min-w-0 flex-1">
-                                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary-500 to-primary-800 flex items-center justify-center invoice-3d flex-shrink-0">
-                                    <i class="fas fa-laptop text-white text-lg"></i>
-                                </div>
-                                <div class="min-w-0">
-                                    <h1 class="font-display text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-tight">${s.businessName}</h1>
-                                    <p class="text-[11px] text-primary-600 font-semibold mt-0.5">Premium Technology Retail Store</p>
-                                    <p class="text-[10px] text-slate-500 mt-1.5 leading-relaxed">${s.businessAddress}</p>
-                                    <p class="text-[10px] text-slate-500">${s.businessPhone}</p>
-                                    <p class="text-[10px] text-slate-400">${s.businessEmail}${s.businessWebsite ? ' · ' + s.businessWebsite : ''}</p>
-                                </div>
-                            </div>
-                            <!-- QR Code next to shop name / location -->
-                            <div class="flex flex-col items-center flex-shrink-0">
-                                <div id="invoice-qr-code" class="bg-white p-1 rounded-lg border-2 border-primary-100 invoice-3d" style="width:72px;height:72px;"></div>
-                                <p class="text-[8px] text-slate-400 mt-1 text-center max-w-[72px] leading-tight">Scan for Warranty</p>
+                    <div class="inv-header">
+                        <div class="inv-logo-row">
+                            <div class="inv-logo-mark"><i class="fas fa-laptop"></i></div>
+                            <div>
+                                <div class="inv-brand-name">${esc(s.businessName)}</div>
+                                <div class="inv-brand-sub">Laptops · Accessories · Solutions</div>
+                                <div class="inv-brand-tag">Better Devices — Brighter Future</div>
                             </div>
                         </div>
+                        <div class="inv-partner">
+                            <div class="inv-partner-label"><i class="fas fa-laptop" style="margin-right:4px"></i>Your Trusted Laptop Partner</div>
+                        </div>
+                    </div>
 
-                        <!-- Invoice meta + BIG status badge -->
-                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-                            <div class="bg-gradient-to-br from-primary-50 to-white rounded-xl px-4 py-3 invoice-3d border border-primary-100/60">
-                                <p class="text-[9px] font-semibold text-primary-500 uppercase tracking-widest mb-0.5">Invoice No.</p>
-                                <p class="text-base font-bold text-slate-900">${bill.invoiceNo}</p>
-                                <p class="text-[10px] text-slate-500 mt-0.5">${formatDateTime(bill.createdAt)}</p>
+                    <div class="inv-contact-bar">
+                        <span><i class="fas fa-map-marker-alt"></i> ${esc(s.businessAddress)}</span>
+                        <span><i class="fas fa-phone"></i> ${esc(s.businessPhone)}</span>
+                        <span><i class="fas fa-envelope"></i> ${esc(s.businessEmail)}</span>
+                        ${s.businessWebsite ? `<span><i class="fas fa-globe"></i> ${esc(s.businessWebsite)}</span>` : ''}
+                    </div>
+
+                    <div class="inv-meta-row">
+                        <div class="inv-title-block">
+                            <div class="inv-title">
+                                <span class="inv-title-icon"><i class="fas fa-file-invoice"></i></span>
+                                INVOICE
                             </div>
-                            <div class="${statusClass} rounded-xl px-5 py-3 text-white text-center min-w-[110px]">
-                                <div class="flex items-center justify-center gap-2">
-                                    <i class="fas ${statusIcon} text-lg"></i>
-                                    <span class="text-lg font-extrabold tracking-wide">${statusLabel}</span>
-                                </div>
-                                <p class="text-[10px] font-medium opacity-90 mt-0.5">${statusSub}</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Divider with gradient -->
-                        <div class="h-0.5 bg-gradient-to-r from-primary-500 via-primary-300 to-transparent mb-4 rounded-full"></div>
-                        
-                        <!-- Customer & Payment -->
-                        <div class="grid grid-cols-2 gap-3 mb-4">
-                            <div class="rounded-xl bg-gradient-to-br from-slate-50 to-white invoice-3d p-3 border border-slate-100">
-                                <p class="text-[9px] font-semibold text-primary-500 uppercase tracking-widest mb-1.5">Bill To</p>
-                                <p class="font-semibold text-slate-900 text-sm leading-snug">${bill.customerName}</p>
-                                <p class="text-[11px] text-slate-600 mt-1">NIC: ${bill.customerNic}</p>
-                                <p class="text-[11px] text-slate-600">Mobile: ${bill.customerMobile}</p>
-                            </div>
-                            <div class="rounded-xl bg-gradient-to-br from-slate-50 to-white invoice-3d p-3 border border-slate-100 text-right">
-                                <p class="text-[9px] font-semibold text-primary-500 uppercase tracking-widest mb-1.5">Payment</p>
-                                <p class="font-semibold text-slate-900 text-sm">${bill.paymentMethod}</p>
-                                <p class="text-[11px] mt-1 ${isPaid ? 'text-emerald-600' : 'text-amber-600'} font-medium">${statusLabel}</p>
+                            <p class="inv-thanks">Thank you for choosing ${esc(s.businessName)}! Your satisfaction is our priority.</p>
+                            <div class="inv-meta-grid" style="margin-top:12px">
+                                <span class="lbl">Invoice No</span>
+                                <span class="val">${esc(bill.invoiceNo)}</span>
+                                <span class="lbl">Date</span>
+                                <span class="val">${formatDate(bill.createdAt)}</span>
+                                <span class="lbl">Payment Mode</span>
+                                <span class="val">${esc(bill.paymentMethod)}</span>
+                                <span class="lbl">Status</span>
+                                <span class="val"><span class="${statusClass}"><i class="fas ${statusIcon}"></i> ${statusLabel}</span></span>
                             </div>
                         </div>
-                        
-                        <!-- Items table -->
-                        <div class="mb-4 overflow-hidden rounded-xl invoice-3d border border-slate-100">
-                            <table class="w-full">
-                                <thead>
-                                    <tr class="bg-gradient-to-r from-primary-800 via-primary-600 to-primary-500">
-                                        <th class="text-left text-[9px] font-semibold text-white uppercase tracking-wider py-2 px-2.5">Product</th>
-                                        <th class="text-center text-[9px] font-semibold text-white uppercase tracking-wider py-2 px-1">Qty</th>
-                                        <th class="text-right text-[9px] font-semibold text-white uppercase tracking-wider py-2 px-2">Price</th>
-                                        <th class="text-right text-[9px] font-semibold text-white uppercase tracking-wider py-2 px-2.5">Amount</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    ${bill.items.map((item, idx) => {
-                                        const detailParts = [];
-                                        if (item.brand) detailParts.push(item.brand);
-                                        if (item.chip) detailParts.push(item.chip);
-                                        if (item.ram) detailParts.push(item.ram + ' RAM');
-                                        if (item.storage) detailParts.push(item.storage);
-                                        if (item.size) detailParts.push(item.size);
-                                        if (item.specs) detailParts.push(item.specs);
-                                        const detailsLine = detailParts.length ? detailParts.join(' · ') : '';
-                                        return `
-                                        <tr class="${idx !== bill.items.length - 1 ? 'border-b border-slate-100' : ''} ${idx % 2 === 1 ? 'bg-slate-50/50' : ''}">
-                                            <td class="py-2 px-2.5">
-                                                <div class="flex items-center gap-2">
-                                                    <img src="${item.image || 'https://via.placeholder.com/36'}" 
-                                                         class="invoice-product-img flex-shrink-0" style="width:36px;height:36px;"
-                                                         alt="${item.name}"
-                                                         onerror="this.src='https://via.placeholder.com/36?text=ZD'">
-                                                    <div class="min-w-0">
-                                                        <p class="text-[11px] font-semibold text-slate-900 leading-snug">${item.name}</p>
-                                                        ${detailsLine ? `<p class="text-[9px] text-slate-500 mt-0.5 leading-snug line-clamp-1">${detailsLine}</p>` : ''}
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="py-2 px-1 text-center text-[11px] font-medium text-slate-700">${item.qty}</td>
-                                            <td class="py-2 px-2 text-right text-[11px] text-slate-600">${formatCurrency(item.price)}</td>
-                                            <td class="py-2 px-2.5 text-right text-[11px] font-semibold text-slate-900">${formatCurrency(item.price * item.qty)}</td>
-                                        </tr>
-                                    `}).join('')}
-                                </tbody>
-                            </table>
+                        <div class="inv-qr-box">
+                            <div id="invoice-qr-code"></div>
+                            <p class="inv-qr-label">Scan for Warranty</p>
                         </div>
-                        
-                        <!-- Specifications + Totals -->
-                        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-                            ${specRows.length ? `
-                            <div class="flex-1 min-w-[140px] max-w-[220px]">
-                                <div class="rounded-xl invoice-spec-box text-white px-4 py-3 space-y-1">
-                                    <p class="text-[9px] font-semibold text-white/70 uppercase tracking-widest mb-1">Specifications</p>
-                                    ${specRows.map(r => `
-                                    <div class="flex justify-between text-[11px] gap-3">
-                                        <span class="text-white/70">${r.label}</span>
-                                        <span class="text-white font-semibold text-right">${r.value}</span>
-                                    </div>`).join('')}
-                                </div>
-                            </div>` : '<div class="flex-1"></div>'}
-                            <div class="w-full sm:w-auto sm:max-w-[200px] flex-shrink-0 ml-auto">
-                                <div class="rounded-xl invoice-total-box text-white px-4 py-3 space-y-1.5">
-                                    <div class="flex justify-between text-[11px]">
-                                        <span class="text-white/70">Subtotal</span>
-                                        <span class="text-white font-medium">${formatCurrency(bill.subtotal)}</span>
-                                    </div>
-                                    ${bill.discount > 0 ? `
-                                    <div class="flex justify-between text-[11px]">
-                                        <span class="text-white/70">Discount</span>
-                                        <span class="text-amber-300 font-medium">−${formatCurrency(bill.discount)}</span>
-                                    </div>` : ''}
-                                    <div class="h-px bg-white/20 my-0.5"></div>
-                                    <div class="flex justify-between items-baseline pt-0.5">
-                                        <span class="text-xs font-bold text-white">Grand Total</span>
-                                        <span class="text-base font-bold text-white tracking-tight">${formatCurrency(bill.grandTotal)}</span>
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
+
+                    <div class="inv-customer-row">
+                        <div class="inv-customer-card">
+                            <h4><i class="fas fa-user"></i> Customer Details</h4>
+                            <div class="row"><span class="k">Name</span><span class="v">${esc(bill.customerName)}</span></div>
+                            <div class="row"><span class="k">Mobile</span><span class="v">${esc(bill.customerMobile)}</span></div>
+                            <div class="row"><span class="k">NIC</span><span class="v">${esc(bill.customerNic)}</span></div>
                         </div>
-                        
-                        <!-- Signature & Seal -->
-                        <div class="sign-row grid grid-cols-2 gap-6 mb-4 mt-5">
-                            <div class="text-center">
-                                <div class="sign-box rounded-lg h-12 bg-slate-50/50"></div>
-                                <p class="text-[10px] font-semibold text-slate-600 mt-1.5">Customer Signature</p>
-                            </div>
-                            <div class="text-center">
-                                <div class="sign-box rounded-lg h-12 bg-slate-50/50"></div>
-                                <p class="text-[10px] font-semibold text-slate-600 mt-1.5">Owner Signature &amp; Seal</p>
-                            </div>
+                        <div class="inv-promo">
+                            <i class="fas fa-laptop"></i>
+                            <div class="t1">Premium Laptops<br>for a Smarter You</div>
+                            <div class="t2">Work · Study · Create · Play</div>
                         </div>
-                        
-                        <!-- Footer -->
-                        <div class="pt-3 border-t border-slate-200">
-                            <p class="text-[11px] text-slate-700 font-semibold text-center mb-1">${s.businessName} — Thank you for choosing us!</p>
-                            <div class="flex flex-wrap justify-center gap-x-3 gap-y-0.5 text-[9px] text-slate-400">
-                                <span>${s.businessPhone}</span>
-                                <span>·</span>
-                                <span>${s.businessEmail}</span>
-                                ${s.businessWebsite ? `<span>·</span><span>${s.businessWebsite}</span>` : ''}
-                            </div>
-                            <p class="text-[8px] text-slate-300 text-center mt-2">Computer-generated invoice · ${bill.invoiceNo} · A5</p>
+                    </div>
+
+                    <div class="inv-table-wrap">
+                        <table class="inv-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:28px">#</th>
+                                    <th>Product Details</th>
+                                    <th class="ctr" style="width:64px">Image</th>
+                                    <th class="ctr" style="width:44px">Qty</th>
+                                    <th class="rgt" style="width:110px">Unit Price</th>
+                                    <th class="rgt" style="width:110px">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${(bill.items || []).map((item, i) => {
+                                    const detailParts = [];
+                                    if (item.brand) detailParts.push(item.brand);
+                                    if (item.chip) detailParts.push(item.chip);
+                                    if (item.ram) detailParts.push(item.ram + ' RAM');
+                                    if (item.storage) detailParts.push(item.storage);
+                                    if (item.size) detailParts.push(item.size);
+                                    if (item.specs) detailParts.push(item.specs);
+                                    const detailsLine = detailParts.length ? detailParts.join(' · ') : '';
+                                    const img = item.image || 'https://via.placeholder.com/52?text=ZD';
+                                    return `
+                                    <tr>
+                                        <td class="ctr" style="font-weight:600;color:#64748b">${i + 1}</td>
+                                        <td>
+                                            <div class="inv-prod-name">${esc(item.name)}</div>
+                                            ${detailsLine ? `<div class="inv-prod-specs">${esc(detailsLine)}</div>` : ''}
+                                        </td>
+                                        <td class="ctr">
+                                            <img src="${esc(img)}" class="inv-prod-img" alt=""
+                                                onerror="this.onerror=null;this.src='https://via.placeholder.com/52?text=ZD'">
+                                        </td>
+                                        <td class="ctr" style="font-weight:600">${item.qty}</td>
+                                        <td class="rgt">${formatCurrency(item.price)}</td>
+                                        <td class="rgt" style="font-weight:700">${formatCurrency(item.price * item.qty)}</td>
+                                    </tr>`;
+                                }).join('') || '<tr><td colspan="6" class="ctr" style="padding:20px;color:#94a3b8">No items</td></tr>'}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="inv-bottom">
+                        <div class="inv-terms">
+                            <h4><i class="fas fa-file-contract" style="margin-right:4px"></i>Terms &amp; Conditions</h4>
+                            <ul>
+                                <li>Goods once sold will not be taken back or exchanged.</li>
+                                <li>Warranty is as per manufacturer terms; claim with original invoice &amp; QR.</li>
+                                <li>Please check the product before leaving the store.</li>
+                                <li>Advance / balance must be cleared as agreed.</li>
+                                <li>This is a computer-generated invoice.</li>
+                            </ul>
                         </div>
+                        <div class="inv-totals">
+                            <div class="line"><span>Subtotal</span><span class="amt">${formatCurrency(bill.subtotal || 0)}</span></div>
+                            <div class="line"><span>Discount</span><span class="amt" style="${(bill.discount||0)>0?'color:#b45309':''}">${(bill.discount||0)>0?'−':''}${formatCurrency(bill.discount || 0)}</span></div>
+                            ${advanceAmt > 0 ? `<div class="line"><span>Advance Paid</span><span class="amt" style="color:#047857">−${formatCurrency(advanceAmt)}</span></div>` : ''}
+                            <div class="grand"><span>Total Amount</span><span>${formatCurrency(grand)}</span></div>
+                            ${advanceAmt > 0 && balanceAmt > 0 ? `<div class="balance"><span>Balance Due</span><span>${formatCurrency(balanceAmt)}</span></div>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="inv-sign-row">
+                        <div class="inv-sign-box">
+                            <div class="inv-sign-line"></div>
+                            <div class="inv-sign-label">Customer Signature</div>
+                        </div>
+                        <div class="inv-stamp">
+                            <div style="font-size:14px;margin-bottom:2px"><i class="fas fa-check"></i></div>
+                            ${esc((s.businessName || 'ZERO DEVICE').substring(0, 14).toUpperCase())}<br>Authorized
+                        </div>
+                        <div class="inv-sign-box">
+                            <div class="inv-sign-line"></div>
+                            <div class="inv-sign-label">Authorized Signature</div>
+                        </div>
+                    </div>
+
+                    <div class="inv-footer">
+                        <div class="left">
+                            <i class="fas fa-laptop"></i>
+                            <span>${esc(s.businessName)} — More Than Just a Shop</span>
+                        </div>
+                        <div class="right">Built for Performance · Designed for You · A4</div>
                     </div>
                 </div>
                 <div class="p-3 border-t border-slate-100 flex flex-wrap justify-end gap-2 no-print bg-slate-50/90">
                     ${!isPaid ? `
-                    <button onclick="markBillAsPaid(${bill.id})" class="px-4 py-2 text-sm font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-lg transition-colors flex items-center gap-2">
+                    <button type="button" onclick="markBillAsPaid(${bill.id})" class="px-4 py-2 text-sm font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-lg transition-colors flex items-center gap-2">
                         <i class="fas fa-check-circle"></i> Mark as Paid
                     </button>` : ''}
-                    <button onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-200 rounded-lg transition-colors">Close</button>
-                    <button onclick="window.print()" class="btn-primary text-white text-sm font-medium px-5 py-2 rounded-lg flex items-center gap-2">
+                    <button type="button" onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-200 rounded-lg transition-colors">Close</button>
+                    <button type="button" onclick="printInvoice()" class="btn-primary text-white text-sm font-medium px-5 py-2 rounded-lg flex items-center gap-2">
                         <i class="fas fa-print"></i> Print / Save PDF
                     </button>
                 </div>
-            `, 'md');
+            `, 'full');
 
-            // Generate QR code after modal is in DOM — points to unique warranty page
             setTimeout(() => {
                 const qrEl = document.getElementById('invoice-qr-code');
+                if (!qrEl) return;
                 const qrText = getWarrantyQrContent(bill);
-                if (qrEl && typeof QRCode !== 'undefined') {
-                    qrEl.innerHTML = '';
+                qrEl.innerHTML = '';
+                if (typeof QRCode !== 'undefined') {
                     try {
                         new QRCode(qrEl, {
-                            text: qrText,
-                            width: 64,
-                            height: 64,
+                            text: qrText || 'https://www.zerodevice.lk',
+                            width: 88,
+                            height: 88,
                             colorDark: '#0b3f6e',
                             colorLight: '#ffffff',
                             correctLevel: QRCode.CorrectLevel.M
                         });
                     } catch (e) {
-                        qrEl.innerHTML = '<span class="text-[9px] text-slate-400 p-2">QR unavailable</span>';
+                        console.warn('QR error', e);
+                        const data = encodeURIComponent(qrText || '');
+                        qrEl.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=${data}&color=0b3f6e" width="88" height="88" alt="QR" style="display:block;margin:0 auto;">`;
                     }
-                } else if (qrEl) {
-                    const data = encodeURIComponent(qrText);
-                    qrEl.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=64x64&data=${data}&color=0b3f6e" width="64" height="64" alt="QR" style="display:block;">`;
+                } else {
+                    const data = encodeURIComponent(qrText || '');
+                    qrEl.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=88x88&data=${data}&color=0b3f6e" width="88" height="88" alt="QR" style="display:block;margin:0 auto;">`;
                 }
-            }, 80);
+            }, 100);
+        }
+
+
+        function printInvoice() {
+            // Ensure invoice is in DOM and paints before print dialog
+            const area = document.getElementById('invoice-print-area');
+            if (!area) {
+                window.print();
+                return;
+            }
+            // Force reflow so Chromium print captures content
+            void area.offsetHeight;
+            setTimeout(() => window.print(), 50);
         }
 
         function markBillAsPaid(billId) {
             const bill = state.bills.find(b => b.id === billId);
             if (!bill) return;
             bill.paymentStatus = 'Paid';
+            if (bill.balanceDue > 0) {
+                bill.advance = (bill.advance || 0) + bill.balanceDue;
+            }
+            bill.balanceDue = 0;
             saveData();
             showToast('Bill marked as Paid', 'success');
             closeModal();
@@ -2691,6 +3194,12 @@
                                 ${sortedBills.length ? sortedBills.map(b => {
                                     const status = b.paymentStatus || 'Paid';
                                     const isPaid = status === 'Paid';
+                                    const isPartial = status === 'Partial';
+                                    const statusBadge = isPaid
+                                        ? 'bg-emerald-100 text-emerald-700'
+                                        : isPartial
+                                            ? 'bg-blue-100 text-blue-700'
+                                            : 'bg-amber-100 text-amber-700';
                                     return `
                                     <tr class="table-row border-b border-slate-50">
                                         <td class="px-4 py-3 text-sm font-medium text-primary-600">${b.invoiceNo}</td>
@@ -2702,9 +3211,9 @@
                                         <td class="px-4 py-3 text-center text-sm text-slate-600">${b.items.reduce((s,i)=>s+i.qty,0)}</td>
                                         <td class="px-4 py-3 text-right text-sm font-medium text-slate-800">${formatCurrency(b.grandTotal)}</td>
                                         <td class="px-4 py-3 text-right text-sm text-emerald-600">${formatCurrency(b.profit || 0)}</td>
-                                        <td class="px-4 py-3 text-sm text-slate-600">${b.paymentMethod}</td>
+                                        <td class="px-4 py-3 text-sm text-slate-600">${b.paymentMethod}${b.advance > 0 ? `<br><span class="text-[10px] text-slate-400">Adv: ${formatCurrency(b.advance)}</span>` : ''}</td>
                                         <td class="px-4 py-3 text-center">
-                                            <span class="badge px-2.5 py-1 rounded-full ${isPaid ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+                                            <span class="badge px-2.5 py-1 rounded-full ${statusBadge}">
                                                 ${status}
                                             </span>
                                         </td>
@@ -2731,6 +3240,10 @@
             if (!bill) return;
             if (!confirm(`Mark invoice ${bill.invoiceNo} as Paid?`)) return;
             bill.paymentStatus = 'Paid';
+            if (bill.balanceDue > 0) {
+                bill.advance = (bill.advance || 0) + bill.balanceDue;
+            }
+            bill.balanceDue = 0;
             saveData();
             showToast('Invoice marked as Paid', 'success');
             renderSalesHistory();
